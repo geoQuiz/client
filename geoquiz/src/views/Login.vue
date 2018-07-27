@@ -39,16 +39,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-.home {
-  color:white;
-  margin-top : 100px;
-}
-
-h2 {
-  color : green;
-  margin-bottom : 10px;
-}
-
-</style>
