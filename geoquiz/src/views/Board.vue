@@ -6,8 +6,6 @@
           <v-card color="green lighten-4"  class="text-lg-left">
             <v-card-title primary class="title headbar">Room</v-card-title>
             <Room msg="room 1"/>
-            <Room msg="room 2"/>
-            <Room msg="room 3"/>
           </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm6 md7>
@@ -23,9 +21,9 @@
               <v-card dark style="height : 50% ; background : #F2F2F2" >
                 <v-container id="scroll-target" style="max-height: 400px;" class="scroll-y">
                   <v-layout column style="height: 400px; text-align : left">
+                    <button @click="generate">Generate Quiz</button>
                     <Chat player="player 1" answer="sample answer"/>
-                    <Chat player="player 1" answer="sample answer"/>
-                    <Chat player="player 1" answer="sample answer"/>
+                    {{ quest }}
                   </v-layout>
                 </v-container>
               </v-card>
@@ -67,6 +65,7 @@
 import Room from '@/components/Room.vue'
 import Chat from '@/components/Chat.vue'
 import Player from '@/components/Player.vue'
+import { database } from '../firebase.js';
 
 export default {
   name: 'board',
@@ -74,6 +73,29 @@ export default {
     Room,
     Chat,
     Player
+  },
+  data(){
+      return {
+        quest: "sedih sekali"
+      }
+  },
+  computed : {
+      la () {
+    }
+  },
+  mounted () {
+    this.get()
+  },
+  methods : {
+    generate() {
+      database.ref('/').on('value', (snapshot) => {
+        snapshot.forEach((child) => {
+          let lala = child.val()
+            let question = lala[Math.floor(Math.random()*lala.length)]
+            this.quest = question
+        })
+      })
+    }
   }
 }
 </script>
