@@ -32,10 +32,29 @@ export default {
   name: 'login',
   components: {
   },
-  methods : {
-    submit () {
-      this.$router.push('/board')
-    }
+  data: function(){
+      return{
+          name : ""
+      }
+  },
+  computed: {
+      ...mapState([
+         'players'
+      ])
+  },
+  methods: {
+      ...mapActions([
+          "writeUser",
+          "getplayers"
+      ]),
+        submitName: function(name){
+            let inputObj = {
+               name,
+               points: 0
+            }
+            this.writeUser(inputObj)
+            this.$router.push({ path: '/board' })
+        }
   }
 }
 </script>

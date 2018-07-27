@@ -33,7 +33,7 @@
             <v-flex d-flex>
               <v-card color="green" style="height : 10%">
                 <v-card-text>
-                  <v-layout row-wrap> 
+                  <v-layout row-wrap>
                     <v-flex d-flex xs12 sm6 md10>
                       <v-text-field
                         v-model="answer"
@@ -82,7 +82,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .headbar {
-  background-color : #3DBC55; 
+  background-color : #3DBC55;
   color :white
 }
 </style>
