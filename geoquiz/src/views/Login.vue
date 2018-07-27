@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="login">
     <v-container fluid fill-height>
       
       <v-layout align-center justify-center>
@@ -12,11 +12,11 @@
             </v-toolbar>
             <v-card-text>
               <v-form>
-                <v-text-field style="color : green" name="login" label="Input your name" type="text"></v-text-field>
+                <v-text-field v-model="name" style="color : green" label="Input your name" type="text"></v-text-field>
               </v-form>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="green">Submit</v-btn>
+              <v-btn v-on:click="submitName(name)" color="green">Submit</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -28,16 +28,41 @@
 
 <script>
 // @ is an alias to /src
+import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'home',
+  name: 'login',
   components: {
+  },
+  data: function(){
+      return{
+          name : ""
+      }
+  },
+  computed: {
+      ...mapState([
+         'players' 
+      ])
+  },
+  methods: {
+      ...mapActions([
+          "writeUser",
+          "getplayers"
+      ]),
+        submitName: function(name){
+            let inputObj = {
+               name,
+               points: 0
+            }
+            this.writeUser(inputObj)
+        }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.home {
+.login {
   color:white;
   margin-top : 100px;
 }
