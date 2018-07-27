@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <v-container fluid fill-height>
-      
+
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md4>
           <h2>Welcome to Geographic Quiz</h2>
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
       ...mapState([
-         'players' 
+         'players'
       ])
   },
   methods: {
@@ -56,6 +56,7 @@ export default {
                points: 0
             }
             this.writeUser(inputObj)
+            this.$router.push({ path: '/board' })
         }
   }
 }

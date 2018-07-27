@@ -13,6 +13,9 @@ export default new Vuex.Store({
     getplayer (state, players) {
       state.players = players;
       // console.log(this.state.players)
+    },
+    getquestion (state, questions){
+      state.questions = questions
     }
   },
   actions: {
@@ -37,12 +40,17 @@ export default new Vuex.Store({
           })
         }
       });
-      database
     },
     getplayers (context) {
       database.ref('player/').on('value', function(snapshot) {
         let players = snapshot.val();
         context.commit('getplayer', players)
+      })
+    },
+    getQuestions (context){
+      database.ref('questions/').on('value', function(snapshot) {
+        let questions = snapshot.val();
+        context.commit('getplayer', questions)
       })
     }
   }
