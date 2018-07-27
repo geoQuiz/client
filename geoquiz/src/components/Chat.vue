@@ -11,6 +11,17 @@ export default {
   props: {
     player: String,
     answer : String
+  },
+  mounted () {
+    this.get()
+  },
+  methods : {
+    get() {
+      database.ref('/').on('value', function (snapshot) {
+        let lalaa = snapshot.val().questions
+        console.log(lalaa)
+      })
+    }
   }
 }
 </script>
