@@ -1,41 +1,24 @@
 <template>
-  <div class="testing">
-      question:
-      <input type="text" v-model="questions">
-      <br>
-      answers: 
-      <input type="text" v-model="answers"> 
-      <button v-on:click="testing(questions, answers)">submit</button>
+  <div>
+    <h1>{{title}}</h1>
+    <inputplayercomponent/>
   </div>
-</template>
+</template> 
 
 <script>
 // @ is an alias to /src
 
-import { mapActions } from 'vuex'
-// import {app} from '@/firebase.js'
 
+
+import inputplayercomponent from "@/components/playerList.vue";
 export default {
-  data: function(){
-      return{
-          questions: "",
-          answers: ""
-      }
-  },
-  name: 'home',
   components: {
+    inputplayercomponent
   },
-  methods: {
-      ...mapActions([
-          "write"
-      ]),
-        testing: function(questions, answers){
-            let inputObj = {
-                questions,
-                answers
-            }
-            this.write(inputObj)
-        }
+  data(){
+     return{
+         title: "these are the player list"
+     }
   }
 }
 </script>
