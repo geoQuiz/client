@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-import Testing from './views/testing.vue'
-import register from "./views/signUp.vue"
+import Login from './views/Login.vue'
+import Board from './views/Board.vue'
 
 Vue.use(Router)
 
@@ -11,23 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'login',
+      component: Login
     },
     {
-      path: '/about',
-      name: 'about',
-      component: About
-    },
-    {
-      path: '/testing',
-      name: 'testing',
-      component: Testing
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: register
+      path: '/board',
+      name: 'board',
+      component: Board
     }
   ]
 })

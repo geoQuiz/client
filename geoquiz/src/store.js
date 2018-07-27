@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { database } from './firebase.js'
-import { stat } from 'fs';
+import { stat } from 'fs'
 
 Vue.use(Vuex)
 
@@ -10,7 +10,7 @@ export default new Vuex.Store({
     questions: null
   },
   mutations: {
-    getplayer(state, players){
+    getplayer (state, players) {
       state.players = players;
       // console.log(this.state.players)
     }
@@ -39,12 +39,11 @@ export default new Vuex.Store({
       });
       database
     },
-    getplayers(context){
-      database.ref('player/').on('value', function(snapshot){
+    getplayers (context) {
+      database.ref('player/').on('value', function(snapshot) {
         let players = snapshot.val();
-        context.commit("getplayer", players)
+        context.commit('getplayer', players)
       })
     }
-  },
-
+  }
 })
