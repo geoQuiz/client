@@ -53,14 +53,24 @@ export default new Vuex.Store({
     writeUser(context,obj){
       console.log(obj);
       database.ref('player/').push().set(
-        obj
-      );
+        obj)
     },
     getplayers(context){
       database.ref('player/').on('value', function(snapshot){
         let players = snapshot.val();
         context.commit("getplayer", players)
       })
+    },
+    answerQuestion(context, answer){
+     database.ref('answers/').push().set(
+       answer,(err =>{
+         if(err){
+           console.log(err)
+         }else{
+           console.log(`succesfully saved answer`)
+         }
+       })
+     )
     }
   },
  

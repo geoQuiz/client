@@ -11,7 +11,7 @@
 // @ is an alias to /src
 import { mapActions } from 'vuex'
 import { mapState } from 'vuex'
-
+import router from '../router.js'
 export default {
   name: "playerInput",
   data: function(){
@@ -31,12 +31,14 @@ export default {
           "writeUser",
           "getplayers"
       ]),
-        submitName: function(name){
+        submitName (name) {
             let inputObj = {
                name,
                points: 0
             }
             this.writeUser(inputObj)
+            router.push("/")
+            console.log(router)
         }
   },
   mounted(){

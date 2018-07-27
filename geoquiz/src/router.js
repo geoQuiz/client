@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Testing from './views/testing.vue'
 import register from "./views/signUp.vue"
+import Answer from "./views/chatboard.vue"
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/signup',
       name: 'signup',
       component: register
+    },
+    {
+      path: '/answer',
+      name: "answer",
+      component: Answer
     }
   ]
 })
