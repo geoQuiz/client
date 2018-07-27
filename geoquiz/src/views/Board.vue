@@ -8,8 +8,6 @@
             <Room msg="room 1"/>
             <Room msg="room 2"/>
             <Room msg="room 3"/>
-            <Room msg="room 4"/>
-            
           </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm6 md7>
@@ -56,9 +54,7 @@
         <v-flex d-flex xs12 sm6 md3>
           <v-card color="green lighten-4"  class="text-lg-left">
             <v-card-title primary class="title headbar">Player Online</v-card-title>
-            <Player player="player 1 name" point="0"/>
-            <Player player="player 2 name" point="0"/>
-            <Player player="player 3 name" point="0"/>
+            <Player/>
           </v-card>
         </v-flex>
       </v-layout>
