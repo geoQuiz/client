@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { database } from './firebase.js'
+import { stat } from 'fs';
 
 Vue.use(Vuex)
 
@@ -9,24 +10,24 @@ export default new Vuex.Store({
     questions: null
   },
   mutations: {
-
+    getplayer(state, players){
+      state.players = players;
+      console.log(this.state.players)
+    }
   },
   actions: {
-    write(dog,obj){
-      // console.log(obj);
-      database.ref('quiz/'+0).set(
+    writeUser(context,obj){
+      console.log(obj);
+      database.ref('player/').push().set(
         obj
       );
     },
-    update(dog,obj){
-      console.log(obj);
-      database.ref('quiz')
-    },
-    readQuestions(dog,obj) {
-      console.log(obj)
-      return database.ref(`quiz/`).on('value', function(snapshot){
-        console.log(snapshot.val());
+    getplayers(context){
+      database.ref('player/').on('value', function(snapshot){
+        let players = snapshot.val();
+        context.commit("getplayer", players)
       })
     }
-  }
+  },
+
 })
