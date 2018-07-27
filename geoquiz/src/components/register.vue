@@ -2,7 +2,7 @@
   <div class="testing">
       name:
       <input type="text" v-model="name">
-      <br> 
+      <br>
       <button v-on:click="submitName(name)">register</button>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   computed: {
       ...mapState([
-         'players' 
+         'players'
       ])
   },
   components: {
@@ -37,6 +37,7 @@ export default {
                points: 0
             }
             this.writeUser(inputObj)
+            this.$router.push({ path: '/testing' })
         }
   },
   mounted(){
