@@ -3,9 +3,10 @@
       question:
       <input type="text" v-model="questions">
       <br>
-      answers: 
-      <input type="text" v-model="answers"> 
+      answers:
+      <input type="text" v-model="answers">
       <button v-on:click="testing(questions, answers)">submit</button>
+      <button v-on:click="readQuestions()">submit</button>
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 // @ is an alias to /src
 
 import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 // import {app} from '@/firebase.js'
 
 export default {
@@ -26,16 +28,24 @@ export default {
   components: {
   },
   methods: {
-      ...mapActions([
-          "write"
-      ]),
-        testing: function(questions, answers){
-            let inputObj = {
-                questions,
-                answers
-            }
-            this.write(inputObj)
-        }
-  }
+    ...mapActions([
+        "write",
+        "readQuestions"
+    ]),
+      testing: function(questions, answers){
+          let inputObj = {
+              question: questions,
+              answer: answers
+          }
+          this.readQuestions(inputObj)
+      },
+    mounted(){
+      this.questions = this.readQuestions()
+    }
+      // readQuestions: function(){
+      //
+      // },
+  },
+
 }
 </script>
